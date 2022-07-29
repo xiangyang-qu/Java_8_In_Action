@@ -1,6 +1,12 @@
 package per.qxy.chapter01;
 
 
+import per.qxy.chapter01.interfaces.AppleFormatter;
+import per.qxy.chapter01.interfaces.ApplePredicate;
+import per.qxy.chapter01.interfaces.impl.AppleFancyFormat;
+import per.qxy.chapter01.interfaces.impl.AppleGreenColorPredicate;
+import per.qxy.chapter01.interfaces.impl.AppleRedAndHeavyPredicate;
+import per.qxy.chapter01.interfaces.impl.AppleSimpleFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +40,35 @@ public class FilterApple {
         apples.forEach(System.out::println);
         System.out.println();
 
-        
+        System.out.println("通过参数化行为，对苹果进行筛选");
+        List<Apple> appleList = filterApples(inventory, new AppleGreenColorPredicate());
+        System.out.println("筛选绿苹果");
+        appleList.forEach(System.out::println);
+        System.out.println();
+        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
+        System.out.println("筛选红色的重苹果");
+        redAndHeavyApples.forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("定制化输出");
+        prettyPrintApple(inventory, new AppleFancyFormat());
+        prettyPrintApple(inventory, new AppleSimpleFormat());
+        System.out.println();
+
+        //匿名内部类实现ApplePredicate对象
+        System.out.println("匿名内部类对接口实现，不创建新的 class 但是在代码中还是十分冗余");
+        List<Apple> redApples1 = filterApples(inventory, new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return "red".equals(apple.getColor());
+            }
+        });
+        redApples1.forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("lambda 表达式实现对接口的实现，直接参数化行为（代码块）");
+        List<Apple> finalAppleList = filterApples(inventory, (Apple apple) -> "green".equals(apple.getColor()));
+        finalAppleList.forEach(System.out::println);
     }
 
 
@@ -102,4 +136,32 @@ public class FilterApple {
         }
         return result;
     }
+
+
+    /**
+     * 通过参数化行为进行筛选。
+     * @param inventory
+     * @param predicate
+     * @return
+     */
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (predicate.test(apple)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 参数化行为练习
+     */
+    public static void prettyPrintApple(List<Apple> inventory, AppleFormatter appleFormatter) {
+        for (Apple apple : inventory) {
+            String out = appleFormatter.accept(apple);
+            System.out.println(out);
+        }
+    }
+
 }
