@@ -1,7 +1,7 @@
-package per.qxy.chapter01.interfaces.impl;
+package per.qxy.chapter02.interfaces.impl;
 
-import per.qxy.chapter01.Apple;
-import per.qxy.chapter01.interfaces.ApplePredicate;
+import per.qxy.chapter02.Apple;
+import per.qxy.chapter02.interfaces.ApplePredicate;
 
 public class AppleGreenColorPredicate implements ApplePredicate {
     @Override

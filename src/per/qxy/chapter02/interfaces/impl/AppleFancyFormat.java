@@ -1,7 +1,7 @@
-package per.qxy.chapter01.interfaces.impl;
+package per.qxy.chapter02.interfaces.impl;
 
-import per.qxy.chapter01.Apple;
-import per.qxy.chapter01.interfaces.AppleFormatter;
+import per.qxy.chapter02.Apple;
+import per.qxy.chapter02.interfaces.AppleFormatter;
 
 public class AppleFancyFormat implements AppleFormatter {
     @Override

@@ -1,7 +1,7 @@
-package per.qxy.chapter01;
+package per.qxy.chapter02;
 
 
-import per.qxy.chapter01.interfaces.Predicate;
+import per.qxy.chapter02.interfaces.Predicate;
 
 import java.util.ArrayList;
 import java.util.List;

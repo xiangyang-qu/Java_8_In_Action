@@ -1,4 +1,4 @@
-package per.qxy.chapter01.interfaces;
+package per.qxy.chapter02.interfaces;
 
 
 /**

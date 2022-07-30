@@ -1,6 +1,6 @@
-package per.qxy.chapter01.interfaces;
+package per.qxy.chapter02.interfaces;
 
-import per.qxy.chapter01.Apple;
+import per.qxy.chapter02.Apple;
 
 /**
  * 参数化行为，通过接口来约束行为，将整个行为作为参数传入到方法中

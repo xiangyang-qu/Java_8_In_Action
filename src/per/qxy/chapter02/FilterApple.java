@@ -1,13 +1,14 @@
-package per.qxy.chapter01;
+package per.qxy.chapter02;
 
 
-import per.qxy.chapter01.interfaces.AppleFormatter;
-import per.qxy.chapter01.interfaces.ApplePredicate;
-import per.qxy.chapter01.interfaces.impl.AppleFancyFormat;
-import per.qxy.chapter01.interfaces.impl.AppleGreenColorPredicate;
-import per.qxy.chapter01.interfaces.impl.AppleRedAndHeavyPredicate;
-import per.qxy.chapter01.interfaces.impl.AppleSimpleFormat;
+import per.qxy.chapter02.interfaces.AppleFormatter;
+import per.qxy.chapter02.interfaces.ApplePredicate;
+import per.qxy.chapter02.interfaces.impl.AppleFancyFormat;
+import per.qxy.chapter02.interfaces.impl.AppleGreenColorPredicate;
+import per.qxy.chapter02.interfaces.impl.AppleRedAndHeavyPredicate;
+import per.qxy.chapter02.interfaces.impl.AppleSimpleFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FilterApple {
@@ -69,6 +70,9 @@ public class FilterApple {
         System.out.println("lambda 表达式实现对接口的实现，直接参数化行为（代码块）");
         List<Apple> finalAppleList = filterApples(inventory, (Apple apple) -> "green".equals(apple.getColor()));
         finalAppleList.forEach(System.out::println);
+
+
+
     }
 
 
