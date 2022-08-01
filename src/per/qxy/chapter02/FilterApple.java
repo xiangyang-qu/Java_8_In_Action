@@ -70,8 +70,29 @@ public class FilterApple {
         System.out.println("lambda 表达式实现对接口的实现，直接参数化行为（代码块）");
         List<Apple> finalAppleList = filterApples(inventory, (Apple apple) -> "green".equals(apple.getColor()));
         finalAppleList.forEach(System.out::println);
+        System.out.println();
 
+        System.out.println("对苹果进行排序");
+        inventory.sort(new Comparator<>() {
+            @Override
+            public int compare(Apple a1, Apple a2) {
+                return a1.getWeight().compareTo(a2.getWeight());
+            }
+        });
 
+        inventory.forEach(System.out::println);
+        System.out.println("使用lambda表达式重写");
+        inventory.sort(((o1, o2) -> o1.getWeight().compareTo(o2.getWeight())));
+        inventory.forEach(System.out::println);
+        System.out.println();
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("匿名内部类写法");
+            }
+        });
+        Thread thread = new Thread(() -> System.out.println("lambda表达式写法"));
 
     }
 
